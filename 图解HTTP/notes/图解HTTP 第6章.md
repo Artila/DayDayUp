@@ -97,20 +97,36 @@
 
 10. 实体首部字段：
 
-   | 首部字段名       | 说明                         |
-   | ---------------- | ---------------------------- |
-   | Allow            | 资源可支持的HTTP方法         |
-   | Content-Encoding | 实体主体适用的编码方式       |
-   | Content-Language | 实体主体的自然语言           |
-   | Content-Length   | 实体主体的大小（单位：字节） |
-   | Content-Location | 替代对应资源的URI            |
-   | Content-MD5      | 实体主体的报文摘要           |
-   | Content-Range    | 实体主体的位置范围           |
-   | Content-Type     | 实体主体的媒体类型           |
-   | Expires          | 实体主体过期的日期时间       |
-   | Last-Modified    | 资源的最后修改日期时间       |
+  | 首部字段名       | 说明                         |
+  | ---------------- | ---------------------------- |
+  | Allow            | 资源可支持的HTTP方法         |
+  | Content-Encoding | 实体主体适用的编码方式       |
+  | Content-Language | 实体主体的自然语言           |
+  | Content-Length   | 实体主体的大小（单位：字节） |
+  | Content-Location | 替代对应资源的URI            |
+  | Content-MD5      | 实体主体的报文摘要           |
+  | Content-Range    | 实体主体的位置范围           |
+  | Content-Type     | 实体主体的媒体类型           |
+  | Expires          | 实体主体过期的日期时间       |
+  | Last-Modified    | 资源的最后修改日期时间       |
 
-11. 
+11. HTTP 首部字段将定义成缓存代理和非缓存代理的行为，分成2种类型。
+
+   - 端到端首部（End-to-end Header）：分在此类别中的首部会转发给请求/响应对应的最终接收目标，且必须保存在由缓存生成的响应中，另外规定它必须被转发。
+   - 逐跳首部（Hop-by-hop Header）：分在此类别中的首部只对单次转发有效，会因通过缓存或代理而不再转发。HTTP/1.1 和之后的版本中，如果要使用 hop-by-hop 首部，需提供 Connection 首部字段。
+
+12. 下面列举了 HTTP/1.1 中的逐跳首部字段。除这8个首部字段之外，其他所有字段都属于端到端首部。
+
+   - Connection
+   - Keep-Alive
+   - Proxy-Authenticate
+   - Proxy-Authorization
+   - Trailer
+   - TE
+   - Transfer-Encoding
+   - Upgrade
+
+13. 通用首部字段是指，请求报文和响应报文双方都会使用的首部。
 
 
 
